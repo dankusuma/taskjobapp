@@ -1,0 +1,123 @@
+﻿@model DusMLM.Models.AddLvlViewModel
+@{
+    ViewBag.Title = "Tambah Level 1";
+
+}
+
+<div class="row">
+    <div class="col-xl-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Tambah Level1</button>
+            </div>
+            <div class="box-body">
+                <table id="tableku" class="display-1 table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <td>Kuantitas Sekarang</td>
+                            <th>Target</th>
+                            <th>Sisa Target</th>
+                            <th>Valid</th>
+                            <th>Tidak Valid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (V_Sisa_Job_Valid_Qty job in Model.jobtree)
+                        {
+                        <tr>
+                            <td>@job.trjob_user_id_level1</td>
+                            <td>@job.trjob_realqty</td>
+                            <td>@job.trjob_targetqty</td>
+                            <td>@job.trjob_sisatargetqty</td>
+                            <td>@job.trjob_validqty</td>
+                            <td>@job.trjob_notvalidqty</td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                <form form action="@Url.Action("AddLvl", "Level")" method="post" enctype="application/x-www-form-urlencoded">
+                    <div class="form-group has-feedback">
+                        <input required="required" value="@Model.job_id" name="job_task_id" type="hidden" class="form-control" placeholder="Nama Pekerjaan">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <select class="form-control" name="user_id">
+                            @foreach (V_user_id_level1 job in Model.userlvl1)
+                            {
+                                <option value="@job.user_id">@job.user_name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input required="required" name="target_qty" type="number" class="form-control" placeholder="Target Kuantitas">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section ViewSpecificJavascript {
+
+    <script type="text/javascript">
+        $('#tableku').DataTable({
+            responsive: true
+        });
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

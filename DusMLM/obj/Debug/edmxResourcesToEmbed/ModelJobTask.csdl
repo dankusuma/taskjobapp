@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="jobtaskappModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="job_task">
+    <Key>
+      <PropertyRef Name="job_taskid" />
+    </Key>
+    <Property Name="job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_dateline" Type="DateTime" Precision="0" />
+    <Property Name="job_targetqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="job_realqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="job_value" Type="Double" />
+    <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="user_member">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_upline" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="user_jaringan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="user_level" Type="Int32" />
+    <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="active_status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="V_Sisa_Job_Fee">
+    <Key>
+      <PropertyRef Name="job_taskid" />
+    </Key>
+    <Property Name="job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_dateline" Type="DateTime" Precision="0" />
+    <Property Name="job_targetqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="job_realqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="job_value" Type="Double" />
+    <Property Name="trfee_user_level" Type="Int32" />
+    <Property Name="trfee_job_value" Type="Double" />
+    <Property Name="SisaFee" Type="Double" />
+  </EntityType>
+  <EntityType Name="V_Sisa_Job_Target_Qty">
+    <Key>
+      <PropertyRef Name="job_taskid" />
+    </Key>
+    <Property Name="job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="job_dateline" Type="DateTime" Precision="0" />
+    <Property Name="job_targetqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="job_realqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="trjob_user_id_level1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="trjob_targetqty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalSisaTargetQty" Type="Decimal" Precision="38" Scale="2" />
+  </EntityType>
+  <EntityType Name="V_user_id_level1">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="jobtaskappEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="job_task" EntityType="Self.job_task" />
+    <EntitySet Name="user_member" EntityType="Self.user_member" />
+    <EntitySet Name="V_Sisa_Job_Fee" EntityType="Self.V_Sisa_Job_Fee" />
+    <EntitySet Name="V_Sisa_Job_Target_Qty" EntityType="Self.V_Sisa_Job_Target_Qty" />
+    <EntitySet Name="V_user_id_level1" EntityType="Self.V_user_id_level1" />
+    <FunctionImport Name="ADD_JOB_TASK">
+      <Parameter Name="job_name" Mode="In" Type="String" />
+      <Parameter Name="job_desc" Mode="In" Type="String" />
+      <Parameter Name="job_dateline" Mode="In" Type="DateTime" />
+      <Parameter Name="job_targetqty" Mode="In" Type="Decimal" />
+      <Parameter Name="job_value" Mode="In" Type="Double" />
+      <Parameter Name="user_login" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_TRFEE">
+      <Parameter Name="trfee_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trfee_user_level" Mode="In" Type="Int32" />
+      <Parameter Name="trfee_job_value" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_TRJOB">
+      <Parameter Name="trjob_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trjob_user_id_level1" Mode="In" Type="String" />
+      <Parameter Name="trjob_target_qty" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_TRRESULT_WI_VALIDATION">
+      <Parameter Name="trresult_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trresult_user_id" Mode="In" Type="String" />
+      <Parameter Name="trresult_resultqty" Mode="In" Type="Decimal" />
+      <Parameter Name="trresult_validqty" Mode="In" Type="Decimal" />
+      <Parameter Name="trresult_user_login" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_TRRESULT_WO_VALIDATION">
+      <Parameter Name="trresult_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trresult_user_id" Mode="In" Type="String" />
+      <Parameter Name="trresult_resultqty" Mode="In" Type="Decimal" />
+      <Parameter Name="trresult_user_login" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_USER_MEMBER">
+      <Parameter Name="user_id" Mode="In" Type="String" />
+      <Parameter Name="user_password" Mode="In" Type="String" />
+      <Parameter Name="user_name" Mode="In" Type="String" />
+      <Parameter Name="user_upline" Mode="In" Type="String" />
+      <Parameter Name="user_login" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATE_TRRESULT_VALIDATION">
+      <Parameter Name="trresult_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trresult_user_id" Mode="In" Type="String" />
+      <Parameter Name="trresult_resultqty" Mode="In" Type="Decimal" />
+      <Parameter Name="trresult_validqty" Mode="In" Type="Decimal" />
+      <Parameter Name="trresult_user_login" Mode="In" Type="String" />
+      <Parameter Name="trresult_created_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

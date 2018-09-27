@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jobtaskappModelStoreContainer" CdmEntityContainer="jobtaskappEntities">
+    <EntitySetMapping Name="job_task">
+      <EntityTypeMapping TypeName="jobtaskappModel.job_task">
+        <MappingFragment StoreEntitySet="job_task">
+          <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+          <ScalarProperty Name="job_name" ColumnName="job_name" />
+          <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+          <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+          <ScalarProperty Name="job_targetqty" ColumnName="job_targetqty" />
+          <ScalarProperty Name="job_realqty" ColumnName="job_realqty" />
+          <ScalarProperty Name="job_value" ColumnName="job_value" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_member">
+      <EntityTypeMapping TypeName="jobtaskappModel.user_member">
+        <MappingFragment StoreEntitySet="user_member">
+          <ScalarProperty Name="user_upline_level1" ColumnName="user_upline_level1" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_upline" ColumnName="user_upline" />
+          <ScalarProperty Name="user_jaringan" ColumnName="user_jaringan" />
+          <ScalarProperty Name="user_level" ColumnName="user_level" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="active_status" ColumnName="active_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Sisa_Job_Fee">
+      <EntityTypeMapping TypeName="jobtaskappModel.V_Sisa_Job_Fee">
+        <MappingFragment StoreEntitySet="V_Sisa_Job_Fee">
+          <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+          <ScalarProperty Name="job_name" ColumnName="job_name" />
+          <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+          <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+          <ScalarProperty Name="job_targetqty" ColumnName="job_targetqty" />
+          <ScalarProperty Name="job_realqty" ColumnName="job_realqty" />
+          <ScalarProperty Name="job_value" ColumnName="job_value" />
+          <ScalarProperty Name="trfee_user_level" ColumnName="trfee_user_level" />
+          <ScalarProperty Name="trfee_job_value" ColumnName="trfee_job_value" />
+          <ScalarProperty Name="SisaFee" ColumnName="SisaFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Sisa_Job_Target_Qty">
+      <EntityTypeMapping TypeName="jobtaskappModel.V_Sisa_Job_Target_Qty">
+        <MappingFragment StoreEntitySet="V_Sisa_Job_Target_Qty">
+          <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+          <ScalarProperty Name="job_name" ColumnName="job_name" />
+          <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+          <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+          <ScalarProperty Name="job_targetqty" ColumnName="job_targetqty" />
+          <ScalarProperty Name="job_realqty" ColumnName="job_realqty" />
+          <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
+          <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
+          <ScalarProperty Name="TotalSisaTargetQty" ColumnName="TotalSisaTargetQty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_user_id_level1">
+      <EntityTypeMapping TypeName="jobtaskappModel.V_user_id_level1">
+        <MappingFragment StoreEntitySet="V_user_id_level1">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ADD_JOB_TASK" FunctionName="jobtaskappModel.Store.ADD_JOB_TASK" />
+    <FunctionImportMapping FunctionImportName="ADD_TRFEE" FunctionName="jobtaskappModel.Store.ADD_TRFEE" />
+    <FunctionImportMapping FunctionImportName="ADD_TRJOB" FunctionName="jobtaskappModel.Store.ADD_TRJOB" />
+    <FunctionImportMapping FunctionImportName="ADD_TRRESULT_WI_VALIDATION" FunctionName="jobtaskappModel.Store.ADD_TRRESULT_WI_VALIDATION" />
+    <FunctionImportMapping FunctionImportName="ADD_TRRESULT_WO_VALIDATION" FunctionName="jobtaskappModel.Store.ADD_TRRESULT_WO_VALIDATION" />
+    <FunctionImportMapping FunctionImportName="ADD_USER_MEMBER" FunctionName="jobtaskappModel.Store.ADD_USER_MEMBER" />
+    <FunctionImportMapping FunctionImportName="UPDATE_TRRESULT_VALIDATION" FunctionName="jobtaskappModel.Store.UPDATE_TRRESULT_VALIDATION" />
+    <EntitySetMapping Name="trjobs">
+      <EntityTypeMapping TypeName="jobtaskappModel.trjob">
+        <MappingFragment StoreEntitySet="trjob">
+          <ScalarProperty Name="trjob_validqty" ColumnName="trjob_validqty" />
+          <ScalarProperty Name="trjob_realqty" ColumnName="trjob_realqty" />
+          <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
+          <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
+          <ScalarProperty Name="trjob_job_taskid" ColumnName="trjob_job_taskid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Sisa_Job_Valid_Qty">
+      <EntityTypeMapping TypeName="jobtaskappModel.V_Sisa_Job_Valid_Qty">
+        <MappingFragment StoreEntitySet="V_Sisa_Job_Valid_Qty">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+          <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+          <ScalarProperty Name="job_name" ColumnName="job_name" />
+          <ScalarProperty Name="trjob_notvalidqty" ColumnName="trjob_notvalidqty" />
+          <ScalarProperty Name="trjob_sisatargetqty" ColumnName="trjob_sisatargetqty" />
+          <ScalarProperty Name="trjob_validqty" ColumnName="trjob_validqty" />
+          <ScalarProperty Name="trjob_realqty" ColumnName="trjob_realqty" />
+          <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
+          <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
+          <ScalarProperty Name="trjob_job_taskid" ColumnName="trjob_job_taskid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="jobtaskappModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="job_task">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="job_taskid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="job_name" Type="varchar" MaxLength="100" />
+          <Property Name="job_desc" Type="varchar(max)" />
+          <Property Name="job_dateline" Type="date" />
+          <Property Name="job_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="job_realqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="job_value" Type="float" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'jobtaskapp.dbo.trdeliver' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="trdeliver">
+          <Property Name="trdeliver_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trdeliver_user_id_level1" Type="varchar" MaxLength="50" />
+          <Property Name="trdeliver_deliverqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trdeliver_dateclose" Type="date" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'jobtaskapp.dbo.trfee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="trfee">
+          <Property Name="trfee_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trfee_user_level" Type="int" />
+          <Property Name="trfee_job_value" Type="float" />
+        </EntityType>-->
+        <EntityType Name="trjob">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trjob_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trjob_user_id_level1" Type="varchar" MaxLength="50" />
+          <Property Name="trjob_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trjob_realqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trjob_validqty" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'jobtaskapp.dbo.trresult' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="trresult">
+          <Property Name="trresult_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trresult_user_id_upline" Type="varchar" MaxLength="50" />
+          <Property Name="trresult_user_id" Type="varchar" MaxLength="50" />
+          <Property Name="trresult_resultqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trresult_validqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trresult_dateclose" Type="date" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>-->
+        <EntityType Name="user_member">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_password" Type="varchar" MaxLength="50" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+          <Property Name="user_upline" Type="varchar(max)" />
+          <Property Name="user_jaringan" Type="varchar(max)" />
+          <Property Name="user_level" Type="int" />
+          <Property Name="created_by" Type="varchar" MaxLength="50" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="active_status" Type="int" />
+          <Property Name="user_upline_level1" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'jobtaskapp.dbo.V_result_fee_Level_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="V_result_fee_Level_1">
+          <Property Name="trjob_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trjob_user_id_level1" Type="varchar" MaxLength="50" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+          <Property Name="user_upline" Type="varchar(max)" />
+          <Property Name="user_level" Type="int" />
+          <Property Name="trjob_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trfee_job_value" Type="float" />
+          <Property Name="trjob_validqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TotalFee" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'jobtaskapp.dbo.V_result_fee_under_Level_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="V_result_fee_under_Level_1">
+          <Property Name="trresult_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trresult_user_id" Type="varchar" MaxLength="50" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+          <Property Name="user_upline" Type="varchar(max)" />
+          <Property Name="trresult_user_id_upline" Type="varchar" MaxLength="50" />
+          <Property Name="user_level" Type="int" />
+          <Property Name="trfee_job_value" Type="float" />
+          <Property Name="trresult_validqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TotalFee" Type="float" />
+          <Property Name="trresult_dateclose" Type="date" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'jobtaskapp.dbo.V_Sisa_Job_Fee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Sisa_Job_Fee">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="job_taskid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="job_name" Type="varchar" MaxLength="100" />
+          <Property Name="job_desc" Type="varchar(max)" />
+          <Property Name="job_dateline" Type="date" />
+          <Property Name="job_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="job_realqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="job_value" Type="float" />
+          <Property Name="trfee_user_level" Type="int" />
+          <Property Name="trfee_job_value" Type="float" />
+          <Property Name="SisaFee" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'jobtaskapp.dbo.V_Sisa_Job_Target_Qty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Sisa_Job_Target_Qty">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="job_taskid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="job_name" Type="varchar" MaxLength="100" />
+          <Property Name="job_desc" Type="varchar(max)" />
+          <Property Name="job_dateline" Type="date" />
+          <Property Name="job_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="job_realqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trjob_user_id_level1" Type="varchar" MaxLength="50" />
+          <Property Name="trjob_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TotalSisaTargetQty" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'jobtaskapp.dbo.V_Sisa_Job_Valid_Qty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Sisa_Job_Valid_Qty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="trjob_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trjob_user_id_level1" Type="varchar" MaxLength="50" />
+          <Property Name="trjob_targetqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trjob_realqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trjob_validqty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="trjob_sisatargetqty" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="trjob_notvalidqty" Type="numeric" Precision="19" Scale="2" />
+          <Property Name="job_name" Type="varchar" MaxLength="100" />
+          <Property Name="job_desc" Type="varchar(max)" />
+          <Property Name="job_dateline" Type="date" />
+          <Property Name="status" Type="int" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'jobtaskapp.dbo.V_user_id_level1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_user_id_level1">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="V_user_level">
+          <Property Name="user_level" Type="int" />
+        </EntityType>-->
+        <Function Name="ADD_JOB_TASK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="job_name" Type="varchar" Mode="In" />
+          <Parameter Name="job_desc" Type="varchar(max)" Mode="In" />
+          <Parameter Name="job_dateline" Type="date" Mode="In" />
+          <Parameter Name="job_targetqty" Type="numeric" Mode="In" />
+          <Parameter Name="job_value" Type="float" Mode="In" />
+          <Parameter Name="user_login" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_TRFEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trfee_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trfee_user_level" Type="int" Mode="In" />
+          <Parameter Name="trfee_job_value" Type="float" Mode="In" />
+        </Function>
+        <Function Name="ADD_TRJOB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trjob_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trjob_user_id_level1" Type="varchar" Mode="In" />
+          <Parameter Name="trjob_target_qty" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="ADD_TRRESULT_WI_VALIDATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trresult_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_user_id" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_resultqty" Type="numeric" Mode="In" />
+          <Parameter Name="trresult_validqty" Type="numeric" Mode="In" />
+          <Parameter Name="trresult_user_login" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_TRRESULT_WO_VALIDATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trresult_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_user_id" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_resultqty" Type="numeric" Mode="In" />
+          <Parameter Name="trresult_user_login" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_USER_MEMBER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="varchar" Mode="In" />
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+          <Parameter Name="user_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_upline" Type="varchar(max)" Mode="In" />
+          <Parameter Name="user_login" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UPDATE_TRRESULT_VALIDATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trresult_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_user_id" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_resultqty" Type="numeric" Mode="In" />
+          <Parameter Name="trresult_validqty" Type="numeric" Mode="In" />
+          <Parameter Name="trresult_user_login" Type="varchar" Mode="In" />
+          <Parameter Name="trresult_created_date" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="jobtaskappModelStoreContainer">
+          <EntitySet Name="job_task" EntityType="Self.job_task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trjob" EntityType="Self.trjob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_member" EntityType="Self.user_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Sisa_Job_Fee" EntityType="Self.V_Sisa_Job_Fee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Sisa_Job_Fee].[job_taskid] AS [job_taskid], 
+    [V_Sisa_Job_Fee].[job_name] AS [job_name], 
+    [V_Sisa_Job_Fee].[job_desc] AS [job_desc], 
+    [V_Sisa_Job_Fee].[job_dateline] AS [job_dateline], 
+    [V_Sisa_Job_Fee].[job_targetqty] AS [job_targetqty], 
+    [V_Sisa_Job_Fee].[job_realqty] AS [job_realqty], 
+    [V_Sisa_Job_Fee].[job_value] AS [job_value], 
+    [V_Sisa_Job_Fee].[trfee_user_level] AS [trfee_user_level], 
+    [V_Sisa_Job_Fee].[trfee_job_value] AS [trfee_job_value], 
+    [V_Sisa_Job_Fee].[SisaFee] AS [SisaFee]
+    FROM [dbo].[V_Sisa_Job_Fee] AS [V_Sisa_Job_Fee]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Sisa_Job_Target_Qty" EntityType="Self.V_Sisa_Job_Target_Qty" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Sisa_Job_Target_Qty].[job_taskid] AS [job_taskid], 
+    [V_Sisa_Job_Target_Qty].[job_name] AS [job_name], 
+    [V_Sisa_Job_Target_Qty].[job_desc] AS [job_desc], 
+    [V_Sisa_Job_Target_Qty].[job_dateline] AS [job_dateline], 
+    [V_Sisa_Job_Target_Qty].[job_targetqty] AS [job_targetqty], 
+    [V_Sisa_Job_Target_Qty].[job_realqty] AS [job_realqty], 
+    [V_Sisa_Job_Target_Qty].[trjob_user_id_level1] AS [trjob_user_id_level1], 
+    [V_Sisa_Job_Target_Qty].[trjob_targetqty] AS [trjob_targetqty], 
+    [V_Sisa_Job_Target_Qty].[TotalSisaTargetQty] AS [TotalSisaTargetQty]
+    FROM [dbo].[V_Sisa_Job_Target_Qty] AS [V_Sisa_Job_Target_Qty]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Sisa_Job_Valid_Qty" EntityType="Self.V_Sisa_Job_Valid_Qty" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Sisa_Job_Valid_Qty].[trjob_job_taskid] AS [trjob_job_taskid], 
+    [V_Sisa_Job_Valid_Qty].[trjob_user_id_level1] AS [trjob_user_id_level1], 
+    [V_Sisa_Job_Valid_Qty].[trjob_targetqty] AS [trjob_targetqty], 
+    [V_Sisa_Job_Valid_Qty].[trjob_realqty] AS [trjob_realqty], 
+    [V_Sisa_Job_Valid_Qty].[trjob_validqty] AS [trjob_validqty], 
+    [V_Sisa_Job_Valid_Qty].[trjob_sisatargetqty] AS [trjob_sisatargetqty], 
+    [V_Sisa_Job_Valid_Qty].[trjob_notvalidqty] AS [trjob_notvalidqty], 
+    [V_Sisa_Job_Valid_Qty].[job_name] AS [job_name], 
+    [V_Sisa_Job_Valid_Qty].[job_desc] AS [job_desc], 
+    [V_Sisa_Job_Valid_Qty].[job_dateline] AS [job_dateline], 
+    [V_Sisa_Job_Valid_Qty].[status] AS [status], 
+    [V_Sisa_Job_Valid_Qty].[id] AS [id]
+    FROM [dbo].[V_Sisa_Job_Valid_Qty] AS [V_Sisa_Job_Valid_Qty]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_user_id_level1" EntityType="Self.V_user_id_level1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_user_id_level1].[user_id] AS [user_id], 
+    [V_user_id_level1].[user_name] AS [user_name]
+    FROM [dbo].[V_user_id_level1] AS [V_user_id_level1]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="jobtaskappModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="job_task">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_dateline" Type="DateTime" Precision="0" />
+          <Property Name="job_targetqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="job_realqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="job_value" Type="Double" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user_member">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_upline" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="user_jaringan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="user_level" Type="Int32" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="active_status" Type="Int32" />
+          <Property Name="user_upline_level1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_Sisa_Job_Fee">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_dateline" Type="DateTime" Precision="0" />
+          <Property Name="job_targetqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="job_realqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="job_value" Type="Double" />
+          <Property Name="trfee_user_level" Type="Int32" />
+          <Property Name="trfee_job_value" Type="Double" />
+          <Property Name="SisaFee" Type="Double" />
+        </EntityType>
+        <EntityType Name="V_Sisa_Job_Target_Qty">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_dateline" Type="DateTime" Precision="0" />
+          <Property Name="job_targetqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="job_realqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trjob_user_id_level1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trjob_targetqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalSisaTargetQty" Type="Decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="V_user_id_level1">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="jobtaskappEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="job_task" EntityType="Self.job_task" />
+          <EntitySet Name="user_member" EntityType="Self.user_member" />
+          <EntitySet Name="V_Sisa_Job_Fee" EntityType="Self.V_Sisa_Job_Fee" />
+          <EntitySet Name="V_Sisa_Job_Target_Qty" EntityType="Self.V_Sisa_Job_Target_Qty" />
+          <EntitySet Name="V_user_id_level1" EntityType="Self.V_user_id_level1" />
+          <FunctionImport Name="ADD_JOB_TASK">
+            <Parameter Name="job_name" Mode="In" Type="String" />
+            <Parameter Name="job_desc" Mode="In" Type="String" />
+            <Parameter Name="job_dateline" Mode="In" Type="DateTime" />
+            <Parameter Name="job_targetqty" Mode="In" Type="Decimal" />
+            <Parameter Name="job_value" Mode="In" Type="Double" />
+            <Parameter Name="user_login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_TRFEE">
+            <Parameter Name="trfee_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trfee_user_level" Mode="In" Type="Int32" />
+            <Parameter Name="trfee_job_value" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_TRJOB">
+            <Parameter Name="trjob_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trjob_user_id_level1" Mode="In" Type="String" />
+            <Parameter Name="trjob_target_qty" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_TRRESULT_WI_VALIDATION">
+            <Parameter Name="trresult_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trresult_user_id" Mode="In" Type="String" />
+            <Parameter Name="trresult_resultqty" Mode="In" Type="Decimal" />
+            <Parameter Name="trresult_validqty" Mode="In" Type="Decimal" />
+            <Parameter Name="trresult_user_login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_TRRESULT_WO_VALIDATION">
+            <Parameter Name="trresult_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trresult_user_id" Mode="In" Type="String" />
+            <Parameter Name="trresult_resultqty" Mode="In" Type="Decimal" />
+            <Parameter Name="trresult_user_login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_USER_MEMBER">
+            <Parameter Name="user_id" Mode="In" Type="String" />
+            <Parameter Name="user_password" Mode="In" Type="String" />
+            <Parameter Name="user_name" Mode="In" Type="String" />
+            <Parameter Name="user_upline" Mode="In" Type="String" />
+            <Parameter Name="user_login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_TRRESULT_VALIDATION">
+            <Parameter Name="trresult_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trresult_user_id" Mode="In" Type="String" />
+            <Parameter Name="trresult_resultqty" Mode="In" Type="Decimal" />
+            <Parameter Name="trresult_validqty" Mode="In" Type="Decimal" />
+            <Parameter Name="trresult_user_login" Mode="In" Type="String" />
+            <Parameter Name="trresult_created_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="trjobs" EntityType="jobtaskappModel.trjob" />
+          <EntitySet Name="V_Sisa_Job_Valid_Qty" EntityType="jobtaskappModel.V_Sisa_Job_Valid_Qty" />
+        </EntityContainer>
+        <EntityType Name="trjob">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trjob_job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trjob_user_id_level1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trjob_targetqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trjob_realqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trjob_validqty" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="V_Sisa_Job_Valid_Qty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="trjob_job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trjob_user_id_level1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trjob_targetqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trjob_realqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trjob_validqty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="trjob_sisatargetqty" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="trjob_notvalidqty" Type="Decimal" Precision="19" Scale="2" />
+          <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="job_dateline" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="jobtaskappModelStoreContainer" CdmEntityContainer="jobtaskappEntities">
+          <EntitySetMapping Name="job_task">
+            <EntityTypeMapping TypeName="jobtaskappModel.job_task">
+              <MappingFragment StoreEntitySet="job_task">
+                <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+                <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+                <ScalarProperty Name="job_targetqty" ColumnName="job_targetqty" />
+                <ScalarProperty Name="job_realqty" ColumnName="job_realqty" />
+                <ScalarProperty Name="job_value" ColumnName="job_value" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_member">
+            <EntityTypeMapping TypeName="jobtaskappModel.user_member">
+              <MappingFragment StoreEntitySet="user_member">
+                <ScalarProperty Name="user_upline_level1" ColumnName="user_upline_level1" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_upline" ColumnName="user_upline" />
+                <ScalarProperty Name="user_jaringan" ColumnName="user_jaringan" />
+                <ScalarProperty Name="user_level" ColumnName="user_level" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Sisa_Job_Fee">
+            <EntityTypeMapping TypeName="jobtaskappModel.V_Sisa_Job_Fee">
+              <MappingFragment StoreEntitySet="V_Sisa_Job_Fee">
+                <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+                <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+                <ScalarProperty Name="job_targetqty" ColumnName="job_targetqty" />
+                <ScalarProperty Name="job_realqty" ColumnName="job_realqty" />
+                <ScalarProperty Name="job_value" ColumnName="job_value" />
+                <ScalarProperty Name="trfee_user_level" ColumnName="trfee_user_level" />
+                <ScalarProperty Name="trfee_job_value" ColumnName="trfee_job_value" />
+                <ScalarProperty Name="SisaFee" ColumnName="SisaFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Sisa_Job_Target_Qty">
+            <EntityTypeMapping TypeName="jobtaskappModel.V_Sisa_Job_Target_Qty">
+              <MappingFragment StoreEntitySet="V_Sisa_Job_Target_Qty">
+                <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+                <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+                <ScalarProperty Name="job_targetqty" ColumnName="job_targetqty" />
+                <ScalarProperty Name="job_realqty" ColumnName="job_realqty" />
+                <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
+                <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
+                <ScalarProperty Name="TotalSisaTargetQty" ColumnName="TotalSisaTargetQty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_user_id_level1">
+            <EntityTypeMapping TypeName="jobtaskappModel.V_user_id_level1">
+              <MappingFragment StoreEntitySet="V_user_id_level1">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ADD_JOB_TASK" FunctionName="jobtaskappModel.Store.ADD_JOB_TASK" />
+          <FunctionImportMapping FunctionImportName="ADD_TRFEE" FunctionName="jobtaskappModel.Store.ADD_TRFEE" />
+          <FunctionImportMapping FunctionImportName="ADD_TRJOB" FunctionName="jobtaskappModel.Store.ADD_TRJOB" />
+          <FunctionImportMapping FunctionImportName="ADD_TRRESULT_WI_VALIDATION" FunctionName="jobtaskappModel.Store.ADD_TRRESULT_WI_VALIDATION" />
+          <FunctionImportMapping FunctionImportName="ADD_TRRESULT_WO_VALIDATION" FunctionName="jobtaskappModel.Store.ADD_TRRESULT_WO_VALIDATION" />
+          <FunctionImportMapping FunctionImportName="ADD_USER_MEMBER" FunctionName="jobtaskappModel.Store.ADD_USER_MEMBER" />
+          <FunctionImportMapping FunctionImportName="UPDATE_TRRESULT_VALIDATION" FunctionName="jobtaskappModel.Store.UPDATE_TRRESULT_VALIDATION" />
+          <EntitySetMapping Name="trjobs">
+            <EntityTypeMapping TypeName="jobtaskappModel.trjob">
+              <MappingFragment StoreEntitySet="trjob">
+                <ScalarProperty Name="trjob_validqty" ColumnName="trjob_validqty" />
+                <ScalarProperty Name="trjob_realqty" ColumnName="trjob_realqty" />
+                <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
+                <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
+                <ScalarProperty Name="trjob_job_taskid" ColumnName="trjob_job_taskid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Sisa_Job_Valid_Qty">
+            <EntityTypeMapping TypeName="jobtaskappModel.V_Sisa_Job_Valid_Qty">
+              <MappingFragment StoreEntitySet="V_Sisa_Job_Valid_Qty">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="job_dateline" ColumnName="job_dateline" />
+                <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="trjob_notvalidqty" ColumnName="trjob_notvalidqty" />
+                <ScalarProperty Name="trjob_sisatargetqty" ColumnName="trjob_sisatargetqty" />
+                <ScalarProperty Name="trjob_validqty" ColumnName="trjob_validqty" />
+                <ScalarProperty Name="trjob_realqty" ColumnName="trjob_realqty" />
+                <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
+                <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
+                <ScalarProperty Name="trjob_job_taskid" ColumnName="trjob_job_taskid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
