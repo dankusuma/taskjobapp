@@ -12,6 +12,9 @@
                
             </div>
             <div class="box-body">
+                <br />
+                <h3>Pekerjaan Berjalan</h3>
+                <br />
                 <table id="tableku" class="display-1 table table-bordered" style="width:100%">
                     <thead>
                         <tr>
@@ -22,15 +25,17 @@
                             <th>Sisa Target</th>
                             <th>Valid</th>
                             <th>Tidak Valid</th>
-                            <th>Fee</th>
                             <th>Dead Line</th>
                             <th>Status</th>
+                            <th>Detil</th>
                             <th>Detil</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (DusMLM.V_Sisa_Job_Valid_Qty job in Model)
                         {
+                            if (job.status == 1)
+                            {
                         <tr>
                             <td>@job.job_name</td>
                             <td>@job.job_desc</td>
@@ -43,9 +48,63 @@
                             <td>@job.status</td>
                             @if (int.Parse(Session["UserLevel"].ToString()) == 1)
                             {
+                                <td><button class="btn btn-primary" onclick="openmodal(@job.trjob_job_taskid)"> Detil</button></td>
+                            }
+                            @if (int.Parse(Session["UserLevel"].ToString()) == 1)
+                            {
                                 <td><button class="btn btn-success" onclick="openmodal(@job.trjob_job_taskid)"> validasi</button></td>
                             }
                         </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <br />
+                <h3>Pekerjaan Selesai</h3>
+                <br />
+                <br />
+                <br />
+                <table id="tableku" class="display-1 table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nama Pekerjaan</th>
+                            <th>Deskripsi</th>
+                            <td>Kuantitas Sekarang</td>
+                            <th>Target</th>
+                            <th>Sisa Target</th>
+                            <th>Valid</th>
+                            <th>Tidak Valid</th>
+                            <th>Dead Line</th>
+                            <th>Status</th>
+                            <th>Detil</th>
+                            <th>Validasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (DusMLM.V_Sisa_Job_Valid_Qty job in Model)
+                        {
+                            if (job.status == 0)
+                            {
+                        <tr>
+                            <td>@job.job_name</td>
+                            <td>@job.job_desc</td>
+                            <td>@job.trjob_realqty</td>
+                            <td>@job.trjob_targetqty</td>
+                            <td>@job.trjob_sisatargetqty</td>
+                            <td>@job.trjob_validqty</td>
+                            <td>@job.trjob_notvalidqty</td>
+                            <td>@job.job_dateline</td>
+                            <td>@job.status</td>
+                            @if (int.Parse(Session["UserLevel"].ToString()) == 1)
+                            {
+                                <td><button class="btn btn-primary" onclick="openmodal(@job.trjob_job_taskid)"> Detil</button></td>
+                            }
+                            @if (int.Parse(Session["UserLevel"].ToString()) == 1)
+                            {
+                                <td><button class="btn btn-success" onclick="openmodal(@job.trjob_job_taskid)"> validasi</button></td>
+                            }
+                        </tr>
+                            }
                         }
                     </tbody>
                 </table>
