@@ -13,15 +13,25 @@ namespace DusMLM.Controllers
         // GET: Level1
         public ActionResult Index()
         {
-            
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             string uid = (string)Session["UserID"];
             string upline =(string) Session["UserUpline"];
             ViewModelLevel1 model=new ViewModelLevel1();
-            model.Table = db.V_Sisa_Job_Valid_Qty.Where(a => a.trjob_user_id_level1 == uid).ToList();
-            model.Downline = db.user_member.Where(a => a.user_upline == uid).ToList();
             if (int.Parse(Session["UserLevel"].ToString()) == 1)
-                return View(model);
+            {
+                model.Table = db.V_Sisa_Job_Valid_Qty.Where(a => a.trjob_user_id_level1 == uid).ToList();
+                model.Downline = db.user_member.Where(a => a.user_upline == uid).ToList();
+            }
             else
+            {
+                model.Table = db.V_Sisa_Job_Valid_Qty.Where(a => a.trjob_user_id_level1 == upline).ToList();
+                model.Downline = null;
+            }
+           
                 return View(model);
 
         }

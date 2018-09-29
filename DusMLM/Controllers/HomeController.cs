@@ -11,17 +11,19 @@ namespace DusMLM.Controllers
         public ActionResult Index()
         {
             
-            if (Session["UserID"] != null)
+            if (Session["UserID"] == null)
             {
-               
-                
-                 if (int.Parse(Session["UserLevel"].ToString()) ==0)
+                return RedirectToAction("Index", "Login");
+            }
+
+
+            if (int.Parse(Session["UserLevel"].ToString()) ==0)
                      return View(from job_task in db.job_task select job_task);
                 else
                     return RedirectToAction("Index","Level1");
                    
-            }
-            return RedirectToAction("Index", "Login");
+            
+           
         }
 
         [HttpPost]
@@ -40,6 +42,14 @@ namespace DusMLM.Controllers
             db.ADD_TRFEE(job.job_task_id, 1, job.fee);
             db.ADD_TRFEE(job.job_task_id, 2, job.fee2);
             return RedirectToAction("Index", "Home", from job_task in db.job_task select job_task);
+
+        }
+        
+        public ActionResult LogOut()
+        {
+
+            Session.Clear();
+            return RedirectToAction("Index", "Login");
 
         }
     }

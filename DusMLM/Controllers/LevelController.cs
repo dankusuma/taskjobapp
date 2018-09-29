@@ -14,6 +14,11 @@ namespace DusMLM.Controllers
         [HttpGet]
         public ActionResult Index(string job_id)
         {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             string id = job_id;
             var lvlmodel = new AddLvlViewModel();
             lvlmodel.job_id = job_id;
