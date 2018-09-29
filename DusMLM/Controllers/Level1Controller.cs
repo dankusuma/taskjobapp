@@ -16,10 +16,13 @@ namespace DusMLM.Controllers
             
             string uid = (string)Session["UserID"];
             string upline =(string) Session["UserUpline"];
+            ViewModelLevel1 model=new ViewModelLevel1();
+            model.Table = db.V_Sisa_Job_Valid_Qty.Where(a => a.trjob_user_id_level1 == uid).ToList();
+            model.Downline = db.user_member.Where(a => a.user_upline == uid).ToList();
             if (int.Parse(Session["UserLevel"].ToString()) == 1)
-                return View(db.V_Sisa_Job_Valid_Qty.Where(a=>a.trjob_user_id_level1== uid));
+                return View(model);
             else
-                return View(db.V_Sisa_Job_Valid_Qty.Where(a => a.trjob_user_id_level1 == upline));
+                return View(model);
 
         }
 
@@ -27,6 +30,8 @@ namespace DusMLM.Controllers
         public ActionResult Validasi(ValidasiViewModel V)
         {
             string uid = (string)Session["UserID"];
+            Int64 idbaru = Int64.Parse(V.job_task_id) + 1;
+            V.job_task_id=idbaru.ToString();
             db.ADD_TRRESULT_WI_VALIDATION(V.job_task_id, V.user_id, V.resultqty, V.validqty, uid);
             return RedirectToAction("Index","Level1");
         }

@@ -250,10 +250,12 @@
     </Compile>
     <Compile Include="Models\AddJobViewModel.cs" />
     <Compile Include="Models\AddLvlViewModel.cs" />
+    <Compile Include="Models\AddTrFeeViewModel.cs" />
     <Compile Include="Models\FormLvlViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\ValidasiViewModel.cs" />
+    <Compile Include="Models\ViewModelLevel1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

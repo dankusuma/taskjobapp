@@ -30,6 +30,17 @@ namespace DusMLM.Controllers
            
             db.ADD_JOB_TASK(job.job_name, job.job_desc, job.job_dateline, job.job_targetqty,job.job_value , Session["UserID"].ToString());
             return RedirectToAction("Index", "Home",from job_task in db.job_task select job_task);
+
+        }
+
+        [HttpPost]
+        public ActionResult AddFee(AddTrFeeViewModel job)
+        {
+
+            db.ADD_TRFEE(job.job_task_id, 1, job.fee);
+            db.ADD_TRFEE(job.job_task_id, 2, job.fee2);
+            return RedirectToAction("Index", "Home", from job_task in db.job_task select job_task);
+
         }
     }
 }

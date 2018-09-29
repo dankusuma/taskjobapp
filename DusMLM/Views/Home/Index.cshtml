@@ -45,6 +45,10 @@
                                     {
                                         <td><a href="/Level/Index?job_id=@job.job_taskid"><button class="btn-primary btn-xs">Detil</button></a></td>
                                     }
+                                    @if (int.Parse(Session["UserLevel"].ToString()) == 0)
+                                    {
+                                        <td><button class="btn-success btn-xs" onclick="openmodal(@job.job_taskid)">Add Fee</button></td>
+                                    }
                                 </tr>
                             }
 
@@ -139,6 +143,42 @@
 </div>
 
 
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                <form form action="@Url.Action("AddFee", "Home")" method="post" enctype="application/x-www-form-urlencoded">
+                    <div class="form-group has-feedback">
+                        <input required="required" id="job_id" name="job_id" type="hidden" class="form-control" placeholder="Nama Pekerjaan">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input required="required" id="job_task_id" name="job_task_id" type="hidden" class="form-control">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input required="required" name="fee" type="number" class="form-control" placeholder="Fee Level 1">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input required="required" name="fee2" type="number" class="form-control" placeholder="Fee Level 2">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 
@@ -166,4 +206,14 @@
         });
     </script>
 
+        <script type="text/javascript">
+            function openmodal(taskid) {
+                console.log(taskid)
+                $("#exampleModalCenter2").modal();
+            document.getElementById("job_task_id").value = taskid;
+        }
+        </script>
+
 }
+/**/
+/**/
