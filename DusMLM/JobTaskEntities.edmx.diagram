@@ -12,6 +12,9 @@
         <EntityTypeShape EntityType="jobtaskappModel.V_user_id_level1" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jobtaskappModel.trjob" Width="1.5" PointX="6.5" PointY="0.75" />
         <EntityTypeShape EntityType="jobtaskappModel.V_Sisa_Job_Valid_Qty" Width="2.75" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="jobtaskappModel.V_Fee_Per_User_Job" Width="3" PointX="1.125" PointY="8.75" />
+        <EntityTypeShape EntityType="jobtaskappModel.trpayment" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="jobtaskappModel.V_Fee_Per_User" Width="1.5" PointX="9.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -87,8 +87,8 @@ C:\Users\Danang\Music\taskjobapp\DusMLM\bin\System.Web.WebPages.Razor.xml
 C:\Users\Danang\Music\taskjobapp\DusMLM\bin\WebHelpers.Mvc5.xml
 C:\Users\Danang\Music\taskjobapp\DusMLM\bin\Antlr3.Runtime.pdb
 C:\Users\Danang\Music\taskjobapp\DusMLM\bin\System.Web.Optimization.xml
-C:\Users\Danang\Music\taskjobapp\DusMLM\obj\Debug\DusMLM.csprojAssemblyReference.cache
 C:\Users\Danang\Music\taskjobapp\DusMLM\obj\Debug\DusMLM.csproj.CoreCompileInputs.cache
 C:\Users\Danang\Music\taskjobapp\DusMLM\obj\Debug\DusMLM.csproj.CopyComplete
 C:\Users\Danang\Music\taskjobapp\DusMLM\obj\Debug\DusMLM.dll
 C:\Users\Danang\Music\taskjobapp\DusMLM\obj\Debug\DusMLM.pdb
+C:\Users\Danang\Music\taskjobapp\DusMLM\obj\Debug\DusMLM.csprojAssemblyReference.cache

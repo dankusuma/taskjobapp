@@ -1,0 +1,87 @@
+﻿@model DusMLM.Models.FeeViewModel
+@{
+    ViewBag.Title = "Fee";
+
+}
+
+<div class="row">
+    <div class="col-xl-12 col-md-12">
+        <h5>Total Fee : @Model.FeeUser.Total_Fee</h5>
+        <h5>Total Fee Terbayar : @Model.FeeUser.Total_Fee_Terbayar</h5>
+        <h5>Saldo : @Model.FeeUser.Saldo</h5>
+        <div class="box box-default">
+
+            <div class="box-body">
+                <table id="tableku" class="display-1 table table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <td>Deskripsi</td>
+                            <th>Total Fee</th>
+                            <th>Total Fee Terbayar</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (V_Fee_Per_User_Job job in Model.FeeUserPerJob)
+                        {
+                            <tr>
+                                <td>@job.job_name</td>
+                                <td>@job.job_desc</td>
+                                <td>@job.Total_Fee</td>
+                                <td>@job.Total_Fee_Terbayar</td>
+                                <td>@job.Saldo</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section ViewSpecificJavascript {
+
+    <script type="text/javascript">
+        $('#tableku').DataTable({
+            responsive: true
+        });
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

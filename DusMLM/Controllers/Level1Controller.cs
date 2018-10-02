@@ -11,14 +11,15 @@ namespace DusMLM.Controllers
     {
         private jobtaskappEntities db = new jobtaskappEntities();
         // GET: Level1
-        public ActionResult Index()
+        public ActionResult Index() 
         {
+            string uid = (string)Session["UserID"];
             if (Session["UserID"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
 
-            string uid = (string)Session["UserID"];
+           
             string upline =(string) Session["UserUpline"];
             ViewModelLevel1 model=new ViewModelLevel1();
             if (int.Parse(Session["UserLevel"].ToString()) == 1)

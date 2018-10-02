@@ -20,23 +20,6 @@
           <Property Name="created_date" Type="datetime" />
           <Property Name="status" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'jobtaskapp.dbo.trdeliver' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="trdeliver">
-          <Property Name="trdeliver_job_taskid" Type="varchar" MaxLength="50" />
-          <Property Name="trdeliver_user_id_level1" Type="varchar" MaxLength="50" />
-          <Property Name="trdeliver_deliverqty" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="trdeliver_dateclose" Type="date" />
-          <Property Name="created_by" Type="varchar" MaxLength="50" />
-          <Property Name="created_date" Type="datetime" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'jobtaskapp.dbo.trfee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="trfee">
-          <Property Name="trfee_job_taskid" Type="varchar" MaxLength="50" />
-          <Property Name="trfee_user_level" Type="int" />
-          <Property Name="trfee_job_value" Type="float" />
-        </EntityType>-->
         <EntityType Name="trjob">
           <Key>
             <PropertyRef Name="id" />
@@ -49,17 +32,21 @@ warning 6013: The table/view 'jobtaskapp.dbo.trfee' does not have a primary key 
           <Property Name="trjob_validqty" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'jobtaskapp.dbo.trresult' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="trresult">
-          <Property Name="trresult_job_taskid" Type="varchar" MaxLength="50" />
-          <Property Name="trresult_user_id_upline" Type="varchar" MaxLength="50" />
-          <Property Name="trresult_user_id" Type="varchar" MaxLength="50" />
-          <Property Name="trresult_resultqty" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="trresult_validqty" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="trresult_dateclose" Type="date" />
+warning 6002: The table/view 'jobtaskapp.dbo.trpayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="trpayment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trpayment_job_taskid" Type="varchar" MaxLength="50" />
+          <Property Name="trpayment_user_id_upline" Type="varchar" MaxLength="50" />
+          <Property Name="trpayment_user_id" Type="varchar" MaxLength="50" />
+          <Property Name="trpayment_debet" Type="float" />
+          <Property Name="trpayment_credit" Type="float" />
+          <Property Name="trpayment_date" Type="date" />
           <Property Name="created_by" Type="varchar" MaxLength="50" />
           <Property Name="created_date" Type="datetime" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="user_member">
           <Key>
             <PropertyRef Name="user_id" />
@@ -76,33 +63,32 @@ warning 6013: The table/view 'jobtaskapp.dbo.trresult' does not have a primary k
           <Property Name="user_upline_level1" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'jobtaskapp.dbo.V_result_fee_Level_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="V_result_fee_Level_1">
-          <Property Name="trjob_job_taskid" Type="varchar" MaxLength="50" />
-          <Property Name="trjob_user_id_level1" Type="varchar" MaxLength="50" />
-          <Property Name="user_name" Type="varchar" MaxLength="50" />
-          <Property Name="user_upline" Type="varchar(max)" />
-          <Property Name="user_level" Type="int" />
-          <Property Name="trjob_targetqty" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="trfee_job_value" Type="float" />
-          <Property Name="trjob_validqty" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="TotalFee" Type="float" />
-        </EntityType>-->
+warning 6002: The table/view 'jobtaskapp.dbo.V_Fee_Per_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Fee_Per_User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trpayment_user_id" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Fee" Type="float" />
+          <Property Name="Total_Fee_Terbayar" Type="float" />
+          <Property Name="Saldo" Type="float" />
+        </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'jobtaskapp.dbo.V_result_fee_under_Level_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="V_result_fee_under_Level_1">
-          <Property Name="trresult_job_taskid" Type="varchar" MaxLength="50" />
-          <Property Name="trresult_user_id" Type="varchar" MaxLength="50" />
-          <Property Name="user_name" Type="varchar" MaxLength="50" />
-          <Property Name="user_upline" Type="varchar(max)" />
-          <Property Name="trresult_user_id_upline" Type="varchar" MaxLength="50" />
-          <Property Name="user_level" Type="int" />
-          <Property Name="trfee_job_value" Type="float" />
-          <Property Name="trresult_validqty" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="TotalFee" Type="float" />
-          <Property Name="trresult_dateclose" Type="date" />
-          <Property Name="created_date" Type="datetime" />
-        </EntityType>-->
+warning 6002: The table/view 'jobtaskapp.dbo.V_Fee_Per_User_Job' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Fee_Per_User_Job">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="trpayment_user_id" Type="varchar" MaxLength="50" />
+          <Property Name="Total_Fee" Type="float" />
+          <Property Name="Total_Fee_Terbayar" Type="float" />
+          <Property Name="Saldo" Type="float" />
+          <Property Name="job_taskid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="job_name" Type="varchar" MaxLength="100" />
+          <Property Name="job_desc" Type="varchar(max)" />
+          <Property Name="status" Type="int" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'jobtaskapp.dbo.V_Sisa_Job_Fee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_Sisa_Job_Fee">
@@ -164,11 +150,6 @@ warning 6002: The table/view 'jobtaskapp.dbo.V_user_id_level1' does not have a p
           <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="user_name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="V_user_level">
-          <Property Name="user_level" Type="int" />
-        </EntityType>-->
         <Function Name="ADD_JOB_TASK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="job_name" Type="varchar" Mode="In" />
           <Parameter Name="job_desc" Type="varchar(max)" Mode="In" />
@@ -176,6 +157,12 @@ warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a prima
           <Parameter Name="job_targetqty" Type="numeric" Mode="In" />
           <Parameter Name="job_value" Type="float" Mode="In" />
           <Parameter Name="user_login" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ADD_TRDELIVER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trdeliver_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trdeliver_user_id_level1" Type="varchar" Mode="In" />
+          <Parameter Name="trtrdeliver_deliverqty" Type="numeric" Mode="In" />
+          <Parameter Name="trtrdeliver_login" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ADD_TRFEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="trfee_job_taskid" Type="varchar" Mode="In" />
@@ -186,6 +173,14 @@ warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a prima
           <Parameter Name="trjob_job_taskid" Type="varchar" Mode="In" />
           <Parameter Name="trjob_user_id_level1" Type="varchar" Mode="In" />
           <Parameter Name="trjob_target_qty" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="ADD_TRPAYMENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trpayment_job_taskid" Type="varchar" Mode="In" />
+          <Parameter Name="trpayment_user_id_upline" Type="varchar" Mode="In" />
+          <Parameter Name="trpayment_user_id" Type="varchar" Mode="In" />
+          <Parameter Name="trpayment_debet" Type="float" Mode="In" />
+          <Parameter Name="trpayment_credit" Type="float" Mode="In" />
+          <Parameter Name="trpayment_login" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ADD_TRRESULT_WI_VALIDATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="trresult_job_taskid" Type="varchar" Mode="In" />
@@ -219,6 +214,40 @@ warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a prima
           <EntitySet Name="job_task" EntityType="Self.job_task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="trjob" EntityType="Self.trjob" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_member" EntityType="Self.user_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trpayment" EntityType="Self.trpayment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [trpayment].[id] AS [id], 
+    [trpayment].[trpayment_job_taskid] AS [trpayment_job_taskid], 
+    [trpayment].[trpayment_user_id_upline] AS [trpayment_user_id_upline], 
+    [trpayment].[trpayment_user_id] AS [trpayment_user_id], 
+    [trpayment].[trpayment_debet] AS [trpayment_debet], 
+    [trpayment].[trpayment_credit] AS [trpayment_credit], 
+    [trpayment].[trpayment_date] AS [trpayment_date], 
+    [trpayment].[created_by] AS [created_by], 
+    [trpayment].[created_date] AS [created_date]
+    FROM [dbo].[trpayment] AS [trpayment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Fee_Per_User" EntityType="Self.V_Fee_Per_User" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Fee_Per_User].[id] AS [id], 
+    [V_Fee_Per_User].[trpayment_user_id] AS [trpayment_user_id], 
+    [V_Fee_Per_User].[Total_Fee] AS [Total_Fee], 
+    [V_Fee_Per_User].[Total_Fee_Terbayar] AS [Total_Fee_Terbayar], 
+    [V_Fee_Per_User].[Saldo] AS [Saldo]
+    FROM [dbo].[V_Fee_Per_User] AS [V_Fee_Per_User]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Fee_Per_User_Job" EntityType="Self.V_Fee_Per_User_Job" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Fee_Per_User_Job].[trpayment_user_id] AS [trpayment_user_id], 
+    [V_Fee_Per_User_Job].[Total_Fee] AS [Total_Fee], 
+    [V_Fee_Per_User_Job].[Total_Fee_Terbayar] AS [Total_Fee_Terbayar], 
+    [V_Fee_Per_User_Job].[Saldo] AS [Saldo], 
+    [V_Fee_Per_User_Job].[job_taskid] AS [job_taskid], 
+    [V_Fee_Per_User_Job].[job_name] AS [job_name], 
+    [V_Fee_Per_User_Job].[job_desc] AS [job_desc], 
+    [V_Fee_Per_User_Job].[status] AS [status]
+    FROM [dbo].[V_Fee_Per_User_Job] AS [V_Fee_Per_User_Job]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_Sisa_Job_Fee" EntityType="Self.V_Sisa_Job_Fee" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_Sisa_Job_Fee].[job_taskid] AS [job_taskid], 
@@ -393,6 +422,23 @@ warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a prima
           </FunctionImport>
           <EntitySet Name="trjobs" EntityType="jobtaskappModel.trjob" />
           <EntitySet Name="V_Sisa_Job_Valid_Qty" EntityType="jobtaskappModel.V_Sisa_Job_Valid_Qty" />
+          <EntitySet Name="V_Fee_Per_User_Job" EntityType="jobtaskappModel.V_Fee_Per_User_Job" />
+          <FunctionImport Name="ADD_TRDELIVER">
+            <Parameter Name="trdeliver_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trdeliver_user_id_level1" Mode="In" Type="String" />
+            <Parameter Name="trtrdeliver_deliverqty" Mode="In" Type="Decimal" />
+            <Parameter Name="trtrdeliver_login" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ADD_TRPAYMENT">
+            <Parameter Name="trpayment_job_taskid" Mode="In" Type="String" />
+            <Parameter Name="trpayment_user_id_upline" Mode="In" Type="String" />
+            <Parameter Name="trpayment_user_id" Mode="In" Type="String" />
+            <Parameter Name="trpayment_debet" Mode="In" Type="Double" />
+            <Parameter Name="trpayment_credit" Mode="In" Type="Double" />
+            <Parameter Name="trpayment_login" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="trpayments" EntityType="jobtaskappModel.trpayment" />
+          <EntitySet Name="V_Fee_Per_User" EntityType="jobtaskappModel.V_Fee_Per_User" />
         </EntityContainer>
         <EntityType Name="trjob">
           <Key>
@@ -421,6 +467,43 @@ warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a prima
           <Property Name="job_dateline" Type="DateTime" Precision="0" />
           <Property Name="status" Type="Int32" />
           <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_Fee_Per_User_Job">
+          <Key>
+            <PropertyRef Name="job_taskid" />
+          </Key>
+          <Property Name="trpayment_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Fee" Type="Double" />
+          <Property Name="Total_Fee_Terbayar" Type="Double" />
+          <Property Name="Saldo" Type="Double" />
+          <Property Name="job_taskid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="trpayment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trpayment_job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trpayment_user_id_upline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trpayment_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trpayment_debet" Type="Double" />
+          <Property Name="trpayment_credit" Type="Double" />
+          <Property Name="trpayment_date" Type="DateTime" Precision="0" />
+          <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="V_Fee_Per_User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trpayment_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total_Fee" Type="Double" />
+          <Property Name="Total_Fee_Terbayar" Type="Double" />
+          <Property Name="Saldo" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -533,6 +616,48 @@ warning 6013: The table/view 'jobtaskapp.dbo.V_user_level' does not have a prima
                 <ScalarProperty Name="trjob_targetqty" ColumnName="trjob_targetqty" />
                 <ScalarProperty Name="trjob_user_id_level1" ColumnName="trjob_user_id_level1" />
                 <ScalarProperty Name="trjob_job_taskid" ColumnName="trjob_job_taskid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Fee_Per_User_Job">
+            <EntityTypeMapping TypeName="jobtaskappModel.V_Fee_Per_User_Job">
+              <MappingFragment StoreEntitySet="V_Fee_Per_User_Job">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+                <ScalarProperty Name="job_name" ColumnName="job_name" />
+                <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Total_Fee_Terbayar" ColumnName="Total_Fee_Terbayar" />
+                <ScalarProperty Name="Total_Fee" ColumnName="Total_Fee" />
+                <ScalarProperty Name="trpayment_user_id" ColumnName="trpayment_user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ADD_TRDELIVER" FunctionName="jobtaskappModel.Store.ADD_TRDELIVER" />
+          <FunctionImportMapping FunctionImportName="ADD_TRPAYMENT" FunctionName="jobtaskappModel.Store.ADD_TRPAYMENT" />
+          <EntitySetMapping Name="trpayments">
+            <EntityTypeMapping TypeName="jobtaskappModel.trpayment">
+              <MappingFragment StoreEntitySet="trpayment">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="trpayment_date" ColumnName="trpayment_date" />
+                <ScalarProperty Name="trpayment_credit" ColumnName="trpayment_credit" />
+                <ScalarProperty Name="trpayment_debet" ColumnName="trpayment_debet" />
+                <ScalarProperty Name="trpayment_user_id" ColumnName="trpayment_user_id" />
+                <ScalarProperty Name="trpayment_user_id_upline" ColumnName="trpayment_user_id_upline" />
+                <ScalarProperty Name="trpayment_job_taskid" ColumnName="trpayment_job_taskid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Fee_Per_User">
+            <EntityTypeMapping TypeName="jobtaskappModel.V_Fee_Per_User">
+              <MappingFragment StoreEntitySet="V_Fee_Per_User">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Total_Fee_Terbayar" ColumnName="Total_Fee_Terbayar" />
+                <ScalarProperty Name="Total_Fee" ColumnName="Total_Fee" />
+                <ScalarProperty Name="trpayment_user_id" ColumnName="trpayment_user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

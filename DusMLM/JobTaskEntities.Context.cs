@@ -34,6 +34,9 @@ namespace DusMLM
         public virtual DbSet<V_user_id_level1> V_user_id_level1 { get; set; }
         public virtual DbSet<trjob> trjobs { get; set; }
         public virtual DbSet<V_Sisa_Job_Valid_Qty> V_Sisa_Job_Valid_Qty { get; set; }
+        public virtual DbSet<V_Fee_Per_User_Job> V_Fee_Per_User_Job { get; set; }
+        public virtual DbSet<trpayment> trpayments { get; set; }
+        public virtual DbSet<V_Fee_Per_User> V_Fee_Per_User { get; set; }
     
         public virtual int ADD_JOB_TASK(string job_name, string job_desc, Nullable<System.DateTime> job_dateline, Nullable<decimal> job_targetqty, Nullable<double> job_value, string user_login)
         {
@@ -196,6 +199,56 @@ namespace DusMLM
                 new ObjectParameter("trresult_created_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_TRRESULT_VALIDATION", trresult_job_taskidParameter, trresult_user_idParameter, trresult_resultqtyParameter, trresult_validqtyParameter, trresult_user_loginParameter, trresult_created_dateParameter);
+        }
+    
+        public virtual int ADD_TRDELIVER(string trdeliver_job_taskid, string trdeliver_user_id_level1, Nullable<decimal> trtrdeliver_deliverqty, string trtrdeliver_login)
+        {
+            var trdeliver_job_taskidParameter = trdeliver_job_taskid != null ?
+                new ObjectParameter("trdeliver_job_taskid", trdeliver_job_taskid) :
+                new ObjectParameter("trdeliver_job_taskid", typeof(string));
+    
+            var trdeliver_user_id_level1Parameter = trdeliver_user_id_level1 != null ?
+                new ObjectParameter("trdeliver_user_id_level1", trdeliver_user_id_level1) :
+                new ObjectParameter("trdeliver_user_id_level1", typeof(string));
+    
+            var trtrdeliver_deliverqtyParameter = trtrdeliver_deliverqty.HasValue ?
+                new ObjectParameter("trtrdeliver_deliverqty", trtrdeliver_deliverqty) :
+                new ObjectParameter("trtrdeliver_deliverqty", typeof(decimal));
+    
+            var trtrdeliver_loginParameter = trtrdeliver_login != null ?
+                new ObjectParameter("trtrdeliver_login", trtrdeliver_login) :
+                new ObjectParameter("trtrdeliver_login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADD_TRDELIVER", trdeliver_job_taskidParameter, trdeliver_user_id_level1Parameter, trtrdeliver_deliverqtyParameter, trtrdeliver_loginParameter);
+        }
+    
+        public virtual int ADD_TRPAYMENT(string trpayment_job_taskid, string trpayment_user_id_upline, string trpayment_user_id, Nullable<double> trpayment_debet, Nullable<double> trpayment_credit, string trpayment_login)
+        {
+            var trpayment_job_taskidParameter = trpayment_job_taskid != null ?
+                new ObjectParameter("trpayment_job_taskid", trpayment_job_taskid) :
+                new ObjectParameter("trpayment_job_taskid", typeof(string));
+    
+            var trpayment_user_id_uplineParameter = trpayment_user_id_upline != null ?
+                new ObjectParameter("trpayment_user_id_upline", trpayment_user_id_upline) :
+                new ObjectParameter("trpayment_user_id_upline", typeof(string));
+    
+            var trpayment_user_idParameter = trpayment_user_id != null ?
+                new ObjectParameter("trpayment_user_id", trpayment_user_id) :
+                new ObjectParameter("trpayment_user_id", typeof(string));
+    
+            var trpayment_debetParameter = trpayment_debet.HasValue ?
+                new ObjectParameter("trpayment_debet", trpayment_debet) :
+                new ObjectParameter("trpayment_debet", typeof(double));
+    
+            var trpayment_creditParameter = trpayment_credit.HasValue ?
+                new ObjectParameter("trpayment_credit", trpayment_credit) :
+                new ObjectParameter("trpayment_credit", typeof(double));
+    
+            var trpayment_loginParameter = trpayment_login != null ?
+                new ObjectParameter("trpayment_login", trpayment_login) :
+                new ObjectParameter("trpayment_login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ADD_TRPAYMENT", trpayment_job_taskidParameter, trpayment_user_id_uplineParameter, trpayment_user_idParameter, trpayment_debetParameter, trpayment_creditParameter, trpayment_loginParameter);
         }
     }
 }

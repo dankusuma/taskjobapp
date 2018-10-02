@@ -109,5 +109,47 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="V_Fee_Per_User_Job">
+      <EntityTypeMapping TypeName="jobtaskappModel.V_Fee_Per_User_Job">
+        <MappingFragment StoreEntitySet="V_Fee_Per_User_Job">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="job_desc" ColumnName="job_desc" />
+          <ScalarProperty Name="job_name" ColumnName="job_name" />
+          <ScalarProperty Name="job_taskid" ColumnName="job_taskid" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="Total_Fee_Terbayar" ColumnName="Total_Fee_Terbayar" />
+          <ScalarProperty Name="Total_Fee" ColumnName="Total_Fee" />
+          <ScalarProperty Name="trpayment_user_id" ColumnName="trpayment_user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ADD_TRDELIVER" FunctionName="jobtaskappModel.Store.ADD_TRDELIVER" />
+    <FunctionImportMapping FunctionImportName="ADD_TRPAYMENT" FunctionName="jobtaskappModel.Store.ADD_TRPAYMENT" />
+    <EntitySetMapping Name="trpayments">
+      <EntityTypeMapping TypeName="jobtaskappModel.trpayment">
+        <MappingFragment StoreEntitySet="trpayment">
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="trpayment_date" ColumnName="trpayment_date" />
+          <ScalarProperty Name="trpayment_credit" ColumnName="trpayment_credit" />
+          <ScalarProperty Name="trpayment_debet" ColumnName="trpayment_debet" />
+          <ScalarProperty Name="trpayment_user_id" ColumnName="trpayment_user_id" />
+          <ScalarProperty Name="trpayment_user_id_upline" ColumnName="trpayment_user_id_upline" />
+          <ScalarProperty Name="trpayment_job_taskid" ColumnName="trpayment_job_taskid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_Fee_Per_User">
+      <EntityTypeMapping TypeName="jobtaskappModel.V_Fee_Per_User">
+        <MappingFragment StoreEntitySet="V_Fee_Per_User">
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+          <ScalarProperty Name="Total_Fee_Terbayar" ColumnName="Total_Fee_Terbayar" />
+          <ScalarProperty Name="Total_Fee" ColumnName="Total_Fee" />
+          <ScalarProperty Name="trpayment_user_id" ColumnName="trpayment_user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

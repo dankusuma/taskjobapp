@@ -120,6 +120,23 @@
     </FunctionImport>
     <EntitySet Name="trjobs" EntityType="jobtaskappModel.trjob" />
     <EntitySet Name="V_Sisa_Job_Valid_Qty" EntityType="jobtaskappModel.V_Sisa_Job_Valid_Qty" />
+    <EntitySet Name="V_Fee_Per_User_Job" EntityType="jobtaskappModel.V_Fee_Per_User_Job" />
+    <FunctionImport Name="ADD_TRDELIVER">
+      <Parameter Name="trdeliver_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trdeliver_user_id_level1" Mode="In" Type="String" />
+      <Parameter Name="trtrdeliver_deliverqty" Mode="In" Type="Decimal" />
+      <Parameter Name="trtrdeliver_login" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADD_TRPAYMENT">
+      <Parameter Name="trpayment_job_taskid" Mode="In" Type="String" />
+      <Parameter Name="trpayment_user_id_upline" Mode="In" Type="String" />
+      <Parameter Name="trpayment_user_id" Mode="In" Type="String" />
+      <Parameter Name="trpayment_debet" Mode="In" Type="Double" />
+      <Parameter Name="trpayment_credit" Mode="In" Type="Double" />
+      <Parameter Name="trpayment_login" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="trpayments" EntityType="jobtaskappModel.trpayment" />
+    <EntitySet Name="V_Fee_Per_User" EntityType="jobtaskappModel.V_Fee_Per_User" />
   </EntityContainer>
   <EntityType Name="trjob">
     <Key>
@@ -148,5 +165,42 @@
     <Property Name="job_dateline" Type="DateTime" Precision="0" />
     <Property Name="status" Type="Int32" />
     <Property Name="id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_Fee_Per_User_Job">
+    <Key>
+      <PropertyRef Name="job_taskid" />
+    </Key>
+    <Property Name="trpayment_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Fee" Type="Double" />
+    <Property Name="Total_Fee_Terbayar" Type="Double" />
+    <Property Name="Saldo" Type="Double" />
+    <Property Name="job_taskid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="job_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="job_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="trpayment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="trpayment_job_taskid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="trpayment_user_id_upline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="trpayment_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="trpayment_debet" Type="Double" />
+    <Property Name="trpayment_credit" Type="Double" />
+    <Property Name="trpayment_date" Type="DateTime" Precision="0" />
+    <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="V_Fee_Per_User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="trpayment_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Fee" Type="Double" />
+    <Property Name="Total_Fee_Terbayar" Type="Double" />
+    <Property Name="Saldo" Type="Double" />
   </EntityType>
 </Schema>

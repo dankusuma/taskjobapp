@@ -217,6 +217,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Level\Index.cshtml" />
     <Content Include="Views\Level1\Index.cshtml" />
+    <Content Include="Views\Fee\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\FeeController.cs" />
     <Compile Include="Controllers\Level1Controller.cs" />
     <Compile Include="Controllers\LevelController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -251,6 +253,7 @@
     <Compile Include="Models\AddJobViewModel.cs" />
     <Compile Include="Models\AddLvlViewModel.cs" />
     <Compile Include="Models\AddTrFeeViewModel.cs" />
+    <Compile Include="Models\FeeViewModel.cs" />
     <Compile Include="Models\FormLvlViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -263,7 +266,16 @@
     <Compile Include="trjob.cs">
       <DependentUpon>JobTaskEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="trpayment.cs">
+      <DependentUpon>JobTaskEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="user_member.cs">
+      <DependentUpon>JobTaskEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_Fee_Per_User.cs">
+      <DependentUpon>JobTaskEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_Fee_Per_User_Job.cs">
       <DependentUpon>JobTaskEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="V_Sisa_Job_Fee.cs">
